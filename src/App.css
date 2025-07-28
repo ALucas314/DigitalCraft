@@ -1,0 +1,70 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.footer-animate {
+  animation: fadeIn 0.7s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+.footer-link {
+  transition: color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.footer-link:hover, .footer-link:focus {
+  color: hsl(var(--primary-glow));
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 2px 12px hsl(var(--primary-glow), 0.15);
+}
+
+.footer-social {
+  transition: background 0.2s, transform 0.2s;
+}
+
+.footer-social:hover, .footer-social:focus {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  transform: scale(1.12) rotate(-3deg);
+}
+
+@media (max-width: 640px) {
+  .footer-newsletter form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

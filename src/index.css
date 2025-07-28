@@ -1,0 +1,778 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7.1%;
+
+    --primary: 348 82% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 348 82% 65%;
+    --primary-hover: 348 85% 40%;
+    --hero-highlight: 348 82% 60%; /* Vermelho para destaque no modo claro */
+    --stats-highlight: 348 82% 60%; /* Vermelho para estatísticas no modo claro */
+    --primary-highlight: 348 82% 60%; /* Vermelho para destaque primário */
+    --chart-color-1: 348 82% 55%; /* Vermelho escuro para gráfico */
+    --chart-color-2: 348 82% 65%; /* Vermelho médio para gráfico */
+    --chart-color-3: 348 82% 75%; /* Vermelho claro para gráfico */
+    --chart-color-4: 348 82% 45%; /* Vermelho muito escuro para gráfico */
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 7.1%;
+    --secondary-dark: 348 100% 20%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 348 82% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
+    --ring: 0 0% 7.1%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(348, 82%, 52%), hsl(348, 82%, 65%));
+    --gradient-hero: linear-gradient(180deg, hsl(348, 100%, 25%), hsl(348, 90%, 20%));
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(0, 0%, 99%));
+    
+    --shadow-primary: 0 10px 30px -10px hsl(348, 82%, 52%, 0.3);
+    --shadow-card: 0 4px 12px -2px hsl(0, 0%, 0%, 0.1);
+    --shadow-glow: 0 0 40px hsl(348, 82%, 65%, 0.4);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Paleta moderna e sofisticada para modo escuro */
+    --background: 220 25% 8%; /* Azul muito escuro com tom elegante */
+    --foreground: 220 15% 95%; /* Branco suave para excelente legibilidade */
+
+    --card: 220 25% 10%; /* Card ligeiramente mais claro que o background */
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 220 15% 95%;
+
+    /* Cores primárias - Azul moderno com toque de roxo */
+    --primary: 225 85% 60%; /* Azul vibrante mas elegante */
+    --primary-foreground: 220 15% 95%;
+    --primary-glow: 225 85% 70%;
+    --primary-hover: 225 85% 50%;
+    --hero-highlight: 225 85% 75%; /* Azul claro para destaque no modo escuro */
+    --stats-highlight: 225 85% 75%; /* Azul claro para estatísticas no modo escuro */
+    --primary-highlight: 225 85% 75%; /* Azul claro para destaque primário no modo escuro */
+    --chart-color-1: 225 85% 60%; /* Azul escuro para gráfico */
+    --chart-color-2: 225 85% 70%; /* Azul médio para gráfico */
+    --chart-color-3: 225 85% 80%; /* Azul claro para gráfico */
+    --chart-color-4: 225 85% 50%; /* Azul muito escuro para gráfico */
+
+    /* Cores secundárias - Tons de cinza azulado */
+    --secondary: 220 25% 15%; /* Cinza azulado médio */
+    --secondary-foreground: 220 15% 95%;
+    --secondary-dark: 220 30% 12%;
+
+    /* Cores muted - Para elementos sutis */
+    --muted: 220 25% 12%; /* Cinza azulado escuro */
+    --muted-foreground: 220 15% 70%; /* Cinza claro para texto secundário */
+
+    /* Cores de destaque - Roxo azulado sofisticado */
+    --accent: 235 75% 55%; /* Roxo azulado elegante */
+    --accent-foreground: 220 15% 95%;
+
+    /* Cores de destruição - Vermelho suave */
+    --destructive: 0 70% 45%; /* Vermelho escuro elegante */
+    --destructive-foreground: 220 15% 95%;
+
+    /* Bordas e inputs */
+    --border: 220 25% 18%; /* Borda sutil */
+    --input: 220 25% 12%; /* Input escuro */
+    --ring: 225 85% 60%; /* Ring da cor primária */
+
+    /* Gradientes modernos */
+    --gradient-primary: linear-gradient(135deg, hsl(225, 85%, 60%), hsl(235, 75%, 55%));
+    --gradient-hero: linear-gradient(180deg, hsl(220, 25%, 15%), hsl(220, 30%, 12%));
+    --gradient-card: linear-gradient(145deg, hsl(220, 25%, 10%), hsl(220, 25%, 12%));
+    
+    /* Sombras suaves */
+    --shadow-primary: 0 10px 30px -10px hsl(225, 85%, 60%, 0.25);
+    --shadow-card: 0 4px 12px -2px hsl(0, 0%, 0%, 0.3);
+    --shadow-glow: 0 0 40px hsl(225, 85%, 60%, 0.2);
+
+    /* Sidebar - Tons mais escuros para destaque */
+    --sidebar-background: 220 25% 6%; /* Mais escuro que o background */
+    --sidebar-foreground: 220 15% 90%;
+    --sidebar-primary: 225 85% 60%;
+    --sidebar-primary-foreground: 220 15% 95%;
+    --sidebar-accent: 220 25% 14%;
+    --sidebar-accent-foreground: 220 15% 90%;
+    --sidebar-border: 220 25% 18%;
+    --sidebar-ring: 225 85% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+  
+  .btn-primary {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-primary);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .card-hover {
+    transition: var(--transition-smooth);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+  
+  /* Classes de animação - SUAVES */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  /* Estado inicial para animações de scroll - SUAVES */
+  [data-animation] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+  
+  [data-animation].fade-in,
+  [data-animation].slide-up,
+  [data-animation].slide-in-left,
+  [data-animation].slide-in-right,
+  [data-animation].scale-in,
+  [data-animation].bounce-in,
+  [data-animation].fade-in-up,
+  [data-animation].slide-in-bottom,
+  [data-animation].zoom-in,
+  [data-animation].slide-in-top {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  
+  .slide-in-left {
+    opacity: 1;
+  }
+  
+  .slide-in-right {
+    opacity: 1;
+  }
+  
+  .scale-in {
+    opacity: 1;
+  }
+  
+  .rotate-in {
+    opacity: 1;
+  }
+  
+  .bounce-in {
+    opacity: 1;
+  }
+  
+  .float {
+    /* Animação removida */
+  }
+  
+  .pulse {
+    /* Animação removida */
+  }
+  
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200px 100%;
+  }
+  
+  .gradient-shift {
+    background-size: 200% 200%;
+  }
+  
+  .glow {
+    /* Animação removida */
+  }
+  
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid;
+    white-space: nowrap;
+  }
+  
+  .fade-in-up {
+    opacity: 1;
+  }
+  
+  .slide-in-bottom {
+    opacity: 1;
+  }
+  
+  .zoom-in {
+    opacity: 1;
+  }
+  
+  .slide-in-top {
+    opacity: 1;
+  }
+  
+  .spin {
+    /* Animação removida */
+  }
+  
+  .wave {
+    /* Animação removida */
+  }
+  
+  /* Animações extras */
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+  }
+  
+  /* Animações suaves para entrada - SUAVES */
+  .fade-in-smooth {
+    animation: fadeInSmooth 1.0s ease-out forwards;
+  }
+  
+  .slide-up-smooth {
+    animation: slideUpSmooth 1.0s ease-out forwards;
+  }
+  
+  .scale-in-smooth {
+    animation: scaleInSmooth 1.0s ease-out forwards;
+  }
+  
+  .slide-left-smooth {
+    animation: slideLeftSmooth 1.0s ease-out forwards;
+  }
+  
+  .slide-right-smooth {
+    animation: slideRightSmooth 1.0s ease-out forwards;
+  }
+  
+  /* Hover suaves */
+  .hover-smooth {
+    transition: all 0.5s ease;
+  }
+  
+  .hover-smooth:hover {
+    transform: translateY(-2px);
+  }
+  
+  .hover-scale-smooth {
+    transition: transform 0.5s ease;
+  }
+  
+  .hover-scale-smooth:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Classes específicas para modo escuro - SUAVES */
+  .dark .dark-fade-in {
+    animation: darkFadeIn 0.8s ease-out forwards;
+  }
+  
+  .dark .dark-slide-in {
+    animation: darkSlideIn 0.8s ease-out forwards;
+  }
+  
+  .dark .dark-scale-in {
+    animation: darkScaleIn 0.6s ease-out forwards;
+  }
+  
+  .dark .dark-hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .dark .dark-hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark .dark-hover-scale {
+    transition: transform 0.3s ease;
+  }
+  
+  .dark .dark-hover-scale:hover {
+    transform: scale(1.01);
+  }
+  
+  .dark .dark-hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .dark .dark-hover-glow:hover {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+  }
+  
+  .dark .dark-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .dark .dark-card-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+  
+  .dark .dark-text-glow {
+    text-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+  }
+  
+  .dark .dark-border-glow {
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+  }
+  
+  .border-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-effect-dark {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Animações com delay */
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .animate-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animate-delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .animate-delay-400 {
+    animation-delay: 0.4s;
+  }
+  
+  .animate-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  /* Hover animations - SUAVES */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+  
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Stagger animations for lists - REMOVIDAS */
+  .stagger-children > * {
+    opacity: 1;
+  }
+  
+  .stagger-children > *:nth-child(1) { /* Animação removida */ }
+  .stagger-children > *:nth-child(2) { /* Animação removida */ }
+  .stagger-children > *:nth-child(3) { /* Animação removida */ }
+  .stagger-children > *:nth-child(4) { /* Animação removida */ }
+  .stagger-children > *:nth-child(5) { /* Animação removida */ }
+  .stagger-children > *:nth-child(6) { /* Animação removida */ }
+  
+  /* Scroll suave - SUAVE */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Melhorias de performance */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Animações responsivas - REMOVIDAS */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      /* Todas as animações removidas */
+    }
+  }
+  
+  .hero-text {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hero-text-secondary {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hero-text-muted {
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .footer-text {
+    color: white;
+  }
+  
+  .footer-text-muted {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .footer-text-muted-hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Animações profissionais e harmoniosas - SUAVES */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animações específicas para modo escuro - SUAVES */
+@keyframes darkFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes darkSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes darkScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) rotate(-1deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Animações suaves de entrada - SUAVES */
+@keyframes fadeInSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleInSmooth {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideLeftSmooth {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRightSmooth {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
