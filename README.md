@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="src/assets/hero-banner.jpg" alt="DigitalCraft" width="860" />
+<img src="src/assets/hero-banner.png" alt="DigitalCraft" width="860" />
 
 <br/><br/>
 
