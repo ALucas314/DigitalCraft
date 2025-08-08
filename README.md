@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="src/assets/hero-banner.png" alt="DigitalCraft" width="860" />
+<img src="src/assets/hero-banner.jpg" alt="DigitalCraft" width="860" />
 
 <br/><br/>
 
@@ -133,7 +133,7 @@ PRs são bem‑vindos. Siga Conventional Commits e mantenha a cobertura e o lint
 ---
 
 ## 📄 Licença
-MIT — veja `LICENSE`.
+Uso Não Comercial (NC) — você pode usar, modificar e distribuir para fins não comerciais. Uso comercial somente com autorização do autor. Veja `LICENSE`.
 
 ---
 
