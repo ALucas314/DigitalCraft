@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="src/assets/hero-banner.png" alt="DigitalCraft" width="860" />
+<img src="src/assets/hero-banner.jpg" alt="DigitalCraft" width="860" />
 
 <br/><br/>
 
@@ -92,21 +92,21 @@ src/
 ## 🧱 Arquitetura (alto nível)
 
 ```mermaid
-graph TD
-  A[App (React + Vite)] --> B[Pages / React Router]
-  A --> C[Components]
-  C --> C1[UI (shadcn/ui + Radix)]
-  C --> C2[Feature Components]
-  A --> D[Hooks]
-  A --> E[Lib]
-  E --> E1[utils]
-  E --> E2[chat-utils]
-  A --> F[Config]
-  A --> G[Assets]
-  C2 --> H[Recharts]
-  C2 --> I[EmailJS]
-  D --> J[TanStack Query]
-  D --> K[React Hook Form + Zod]
+graph TD;
+  A["App (React + Vite)"] --> B["Pages + React Router"];
+  A --> C["Components"];
+  C --> C1["UI (shadcn/ui + Radix)"];
+  C --> C2["Feature Components"];
+  A --> D["Hooks"];
+  A --> E["Lib"];
+  E --> E1["utils"];
+  E --> E2["chat-utils"];
+  A --> F["Config"];
+  A --> G["Assets"];
+  C2 --> H["Recharts"];
+  C2 --> I["EmailJS"];
+  D --> J["TanStack Query"];
+  D --> K["React Hook Form + Zod"];
 ```
 
 ---
