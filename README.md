@@ -10,7 +10,7 @@
 
 **Uma aplicação web moderna e responsiva desenvolvida com as melhores práticas de desenvolvimento frontend**
 
-[![Demo](https://img.shields.io/badge/Live_Demo-View_Project-8B5CF6?style=for-the-badge&logo=vercel)](https://digitalcraft-demo.vercel.app)
+[![Demo](https://img.shields.io/badge/Live_Demo-View_Project-8B5CF6?style=for-the-badge&logo=vercel)](https://digitalcraft21.netlify.app/)
 [![Code Quality](https://img.shields.io/badge/Code_Quality-A+_Grade-10B981?style=for-the-badge&logo=codecov)]
 
 </div>
