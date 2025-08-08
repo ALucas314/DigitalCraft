@@ -423,9 +423,9 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 **Seu Nome** - Desenvolvedor Full Stack
 
-- **LinkedIn**: [Seu Perfil](www.linkedin.com/in/antonio-lucas-costa-araujo-5462a52b0)
-- **GitHub**: [@seu-usuario](https://github.com/ALucas314)
-- **Portfolio**: [Seu Site](https://seusite.com)
+- **LinkedIn**: [Meu Perfil](www.linkedin.com/in/antonio-lucas-costa-araujo-5462a52b0)
+- **GitHub**: [@meu Usuário](https://github.com/ALucas314)
+- **Portfolio**: [Meu Site](https://seusite.com)
 
 ---
 
