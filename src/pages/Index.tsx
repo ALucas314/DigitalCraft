@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { UnifiedCTA } from "@/components/UnifiedCTA";
 import { ChatWidget } from "@/components/ChatWidget";
 import { ChatToggleButton } from "@/components/ChatToggleButton";
+import { setOpenChatCallback } from "@/lib/chat-utils";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -39,9 +40,13 @@ const Index = () => {
   };
 
   const handleOpenChat = () => {
-    setShowChat(true);
-    scrollToSection('portfolio');
+    setIsChatOpen(true);
   };
+
+  // Registrar a função de abrir chat globalmente
+  useEffect(() => {
+    setOpenChatCallback(handleOpenChat);
+  }, []);
 
   // Animações suaves de scroll
   useEffect(() => {

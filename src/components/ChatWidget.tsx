@@ -61,7 +61,8 @@ import {
   Sun,
   Moon,
   Monitor,
-  LogOut
+  LogOut,
+  Sparkles
 } from "lucide-react";
 
 interface ChatWidgetProps {
@@ -74,7 +75,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
   const [chatMessages, setChatMessages] = useState([
     { 
       id: 1, 
-      text: "Olá! 👋 Sou o assistente virtual da SoftwarePro. Posso te ajudar com:\n\n🚀 **Encomendar Projeto** - Solicitar orçamento personalizado\n📞 **Entrar em Contato** - Falar diretamente com especialista\n\nO que você gostaria de fazer?",
+      text: "Olá! 👋 Sou o assistente virtual da DigitalCraft. Posso te ajudar com:\n\n🚀 **Encomendar Projeto** - Solicitar orçamento personalizado\n📞 **Entrar em Contato** - Falar diretamente com especialista\n\nO que você gostaria de fazer?",
       isBot: true,
       type: "greeting",
       timestamp: new Date()
@@ -122,7 +123,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
       action: "order_project",
       icon: Rocket,
       description: "Solicitar orçamento personalizado",
-      color: "from-blue-500 to-purple-600"
+      color: "from-purple-500 to-blue-600"
     },
     { 
       text: "📞 Entrar em Contato", 
@@ -398,7 +399,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
     try {
       setChatMessages([{ 
         id: 1, 
-        text: "Olá! 👋 Sou o assistente virtual da SoftwarePro. Posso te ajudar com:\n\n🚀 **Encomendar Projeto** - Solicitar orçamento personalizado\n📞 **Entrar em Contato** - Falar diretamente com especialista\n\nO que você gostaria de fazer?",
+        text: "Olá! 👋 Sou o assistente virtual da DigitalCraft. Posso te ajudar com:\n\n🚀 **Encomendar Projeto** - Solicitar orçamento personalizado\n📞 **Entrar em Contato** - Falar diretamente com especialista\n\nO que você gostaria de fazer?",
         isBot: true,
         type: "greeting",
         timestamp: new Date()
@@ -509,7 +510,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
 
       const successMessage = {
         id: Date.now(),
-        text: "✅ Orçamento enviado com sucesso! Entraremos em contato em até 24 horas. Confira seu e-mail para a confirmação. Obrigado por escolher a SoftwarePro! 🚀",
+        text: "✅ Orçamento enviado com sucesso! Entraremos em contato em até 24 horas. Confira seu e-mail para a confirmação. Obrigado por escolher a DigitalCraft! 🚀",
         isBot: true,
         type: "success",
         timestamp: new Date()
@@ -550,7 +551,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
   const handleWhatsApp = () => {
     try {
       const phone = "91996014545";
-      const message = "Olá! Gostaria de saber mais sobre os serviços de desenvolvimento da SoftwarePro. Pode me ajudar com um orçamento?";
+      const message = "Olá! Gostaria de saber mais sobre os serviços de desenvolvimento da DigitalCraft. Pode me ajudar com um orçamento?";
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
     } catch (error) {
@@ -561,18 +562,18 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-end p-4 pointer-events-none">
-      <div className="w-full max-w-md h-[600px] pointer-events-auto">
-        <Card className="h-full flex flex-col shadow-2xl border-0 bg-gradient-to-br from-background to-muted/20 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-end justify-end p-2 sm:p-4 pointer-events-none">
+      <div className="w-full max-w-sm sm:max-w-md h-[500px] sm:h-[600px] pointer-events-auto">
+        <Card className="h-full flex flex-col shadow-2xl border-0 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-border/50 bg-gradient-to-r from-primary/5 to-accent/5">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-gradient-to-r from-red-500 to-pink-600">
-                <MessageCircle className="w-5 h-5 text-primary-foreground" />
+          <div className="flex items-center justify-between p-3 sm:p-4 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-purple-500/10 to-blue-500/10">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
               <div>
-                <h3 className="font-semibold">Assistente Virtual</h3>
-                <p className="text-xs text-muted-foreground">Online • Responde em segundos</p>
+                <h3 className="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Assistente Virtual</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400">Online • Responde em segundos</p>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -580,60 +581,60 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                 variant="ghost"
                 size="sm"
                 onClick={resetChat}
-                className="h-8 w-8 p-0"
+                className="h-7 w-7 sm:h-8 sm:w-8 p-0 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
                 title="Reiniciar chat"
               >
-                <RotateCcw className="w-4 h-4" />
+                <RotateCcw className="w-3 h-3 sm:w-4 sm:h-4" />
               </Button>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={endChat}
-                className="h-8 w-8 p-0 text-red-500 hover:text-red-600 hover:bg-red-50"
+                className="h-7 w-7 sm:h-8 sm:w-8 p-0 text-gray-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
                 title="Encerrar chat"
               >
-                <LogOut className="w-4 h-4" />
+                <LogOut className="w-3 h-3 sm:w-4 sm:h-4" />
               </Button>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={onClose}
-                className="h-8 w-8 p-0"
+                className="h-7 w-7 sm:h-8 sm:w-8 p-0 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-blue-900/20 dark:hover:text-blue-400"
                 title="Fechar chat"
               >
-                <X className="w-4 h-4" />
+                <X className="w-3 h-3 sm:w-4 sm:h-4" />
               </Button>
             </div>
           </div>
 
           {/* Chat Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-background to-muted/10">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900">
             {chatMessages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${message.isBot ? "justify-start" : "justify-end"}`}
               >
-                <div className={`flex items-start gap-2 max-w-xs lg:max-w-sm ${
+                <div className={`flex items-start gap-2 max-w-[85%] sm:max-w-xs lg:max-w-sm ${
                   message.isBot ? "flex-row" : "flex-row-reverse"
                 }`}>
-                  <div className={`p-2 rounded-full ${
+                  <div className={`p-1.5 sm:p-2 rounded-full flex-shrink-0 ${
                     message.isBot 
-                      ? "bg-gradient-to-r from-red-500 to-pink-600 text-primary-foreground" 
-                      : "bg-gradient-to-r from-primary to-accent text-primary-foreground"
+                      ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white" 
+                      : "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
                   }`}>
                     {message.isBot ? <Bot className="w-3 h-3" /> : <User className="w-3 h-3" />}
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col min-w-0">
                     <div
-                      className={`p-3 rounded-2xl whitespace-pre-line text-sm ${
+                      className={`p-2.5 sm:p-3 rounded-2xl whitespace-pre-line text-sm ${
                         message.isBot
-                          ? "bg-card border border-border/50 shadow-sm"
-                          : "bg-gradient-to-r from-primary to-accent text-primary-foreground"
+                          ? "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm"
+                          : "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
                       }`}
                     >
                       {message.text}
                     </div>
-                    <span className={`text-xs text-muted-foreground mt-1 ${
+                    <span className={`text-xs text-slate-500 dark:text-slate-400 mt-1 ${
                       message.isBot ? "text-left" : "text-right"
                     }`}>
                       {formatTime(message.timestamp)}
@@ -647,14 +648,14 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="flex items-start gap-2">
-                  <div className="p-2 rounded-full bg-gradient-to-r from-red-500 to-pink-600 text-primary-foreground">
+                  <div className="p-1.5 sm:p-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white">
                     <Bot className="w-3 h-3" />
                   </div>
-                  <div className="p-3 rounded-2xl bg-card border border-border/50">
+                  <div className="p-2.5 sm:p-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                      <div className="w-2 h-2 bg-slate-400 dark:bg-slate-500 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-slate-400 dark:bg-slate-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                      <div className="w-2 h-2 bg-slate-400 dark:bg-slate-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
                   </div>
                 </div>
@@ -668,7 +669,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                   variant="outline"
                   size="sm"
                   onClick={endChat}
-                  className="text-xs text-red-500 hover:text-red-600 hover:bg-red-50 border-red-200 hover:border-red-300"
+                  className="text-xs text-gray-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 border-gray-200 hover:border-blue-300"
                 >
                   <X className="w-3 h-3 mr-1" />
                   Encerrar Chat
@@ -681,20 +682,20 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
 
           {/* Quick Options */}
           {currentStep === "main" && chatMessages.length === 1 && (
-            <div className="p-4 border-t border-border/50 bg-gradient-to-t from-muted/20 to-transparent">
-              <div className="grid grid-cols-1 gap-3">
+            <div className="p-2.5 sm:p-3 border-t border-slate-200 dark:border-slate-700 bg-gradient-to-t from-slate-100 dark:from-slate-800 to-transparent">
+              <div className="grid grid-cols-1 gap-2">
                 {mainOptions.map((option) => (
                   <Button
                     key={option.action}
                     variant="outline"
                     size="sm"
                     onClick={() => handleQuickOption(option.action)}
-                    className="text-sm h-auto p-4 flex items-center gap-3 hover:scale-105 transition-all duration-200 border-border/50 hover:border-primary/50"
+                    className="text-sm h-11 sm:h-12 p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3 hover:scale-105 transition-all duration-200 border-slate-200 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                   >
-                    <option.icon className="w-5 h-5" />
-                    <div className="text-left">
-                      <div className="font-semibold">{option.text}</div>
-                      <div className="text-xs text-muted-foreground">{option.description}</div>
+                    <option.icon className="w-4 h-4 text-slate-900 dark:text-white flex-shrink-0" />
+                    <div className="text-left min-w-0 flex-1">
+                      <div className="font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 truncate">{option.text}</div>
+                      <div className="text-xs text-slate-600 dark:text-slate-400 truncate">{option.description}</div>
                     </div>
                   </Button>
                 ))}
@@ -704,7 +705,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
 
           {/* Project Selection Options */}
           {currentStep === "project_selection" && (
-            <div className="p-3 border-t border-border/50 bg-gradient-to-t from-muted/20 to-transparent">
+            <div className="p-2.5 sm:p-3 border-t border-slate-200 dark:border-slate-700 bg-gradient-to-t from-slate-100 dark:from-slate-800 to-transparent">
               <div className="grid grid-cols-1 gap-2 max-h-48 overflow-y-auto">
                 {projectTypes.map((project) => (
                   <Button
@@ -712,16 +713,16 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                     variant="outline"
                     size="sm"
                     onClick={() => handleProjectSelection(project.id)}
-                    className="w-full text-left h-auto p-3 justify-start hover:bg-primary/5 border-border/50"
+                    className="w-full text-left h-auto p-2.5 sm:p-3 justify-start hover:bg-blue-50 dark:hover:bg-blue-900/20 border-slate-200 dark:border-slate-600 hover:text-blue-600 dark:hover:text-blue-400"
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="text-lg">{project.title.split(' ')[0]}</div>
-                      <div className="flex-1">
-                        <div className="font-medium text-sm">{project.title}</div>
-                        <div className="text-xs text-muted-foreground">{project.description}</div>
-                        <div className="text-xs font-semibold text-primary mt-1">{project.price}</div>
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <div className="text-base sm:text-lg flex-shrink-0">{project.title.split(' ')[0]}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium text-sm text-slate-900 dark:text-white truncate">{project.title}</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 truncate">{project.description}</div>
+                        <div className="text-xs font-semibold text-purple-600 dark:text-purple-400 mt-1">{project.price}</div>
                       </div>
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-4 h-4 flex-shrink-0" />
                     </div>
                   </Button>
                 ))}
@@ -731,7 +732,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
 
           {/* Project Options */}
           {currentStep === "project_options" && (
-            <div className="p-3 border-t border-border/50 bg-gradient-to-t from-muted/20 to-transparent">
+            <div className="p-2.5 sm:p-3 border-t border-slate-200 dark:border-slate-700 bg-gradient-to-t from-slate-100 dark:from-slate-800 to-transparent">
               <div className="space-y-2">
                 <Button
                   variant="outline"
@@ -740,19 +741,19 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                     setCurrentStep("form");
                     setShowForm(true);
                   }}
-                  className="w-full text-left h-auto p-3 justify-start hover:bg-primary/5 border-border/50"
+                  className="w-full text-left h-auto p-2.5 sm:p-3 justify-start hover:bg-blue-50 dark:hover:bg-blue-900/20 border-slate-200 dark:border-slate-600 hover:text-blue-600 dark:hover:text-blue-400"
                 >
-                  <FileText className="w-4 h-4 mr-2" />
-                  Preencher Formulário de Orçamento
+                  <FileText className="w-4 h-4 mr-2 flex-shrink-0" />
+                  <span className="truncate">Preencher Formulário de Orçamento</span>
                 </Button>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setCurrentStep("contact_options")}
-                  className="w-full text-left h-auto p-3 justify-start hover:bg-primary/5 border-border/50"
+                  className="w-full text-left h-auto p-2.5 sm:p-3 justify-start hover:bg-blue-50 dark:hover:bg-blue-900/20 border-slate-200 dark:border-slate-600 hover:text-blue-600 dark:hover:text-blue-400"
                 >
-                  <Phone className="w-4 h-4 mr-2" />
-                  Falar Diretamente com Especialista
+                  <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+                  <span className="truncate">Falar Diretamente com Especialista</span>
                 </Button>
               </div>
             </div>
@@ -760,11 +761,11 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
 
           {/* Contact Options */}
           {currentStep === "contact_options" && (
-            <div className="p-3 border-t border-border/50 bg-gradient-to-t from-muted/20 to-transparent">
-              <div className="space-y-3">
+            <div className="p-2.5 sm:p-3 border-t border-slate-200 dark:border-slate-700 bg-gradient-to-t from-slate-100 dark:from-slate-800 to-transparent">
+              <div className="space-y-2 sm:space-y-3">
                 <Button
                   onClick={handleWhatsApp}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white h-11 sm:h-12"
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   Abrir WhatsApp
@@ -776,7 +777,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                     setCurrentStep("form");
                     setShowForm(true);
                   }}
-                  className="w-full border-border/50"
+                  className="w-full h-11 sm:h-12"
                 >
                   <FileText className="w-4 h-4 mr-2" />
                   Preencher Formulário
@@ -787,7 +788,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
 
           {/* Back to Main Menu */}
           {(currentStep === "project_selection" || currentStep === "project_options" || currentStep === "contact_options") && (
-            <div className="p-3 border-t border-border/50 bg-gradient-to-t from-muted/20 to-transparent">
+            <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-gradient-to-t from-slate-100 dark:from-slate-800 to-transparent">
               <Button
                 variant="ghost"
                 size="sm"
@@ -813,90 +814,77 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                     setChatMessages(prev => [...prev, botMessage]);
                   }, 500);
                 }}
-                className="text-sm w-full"
+                className="text-sm w-full text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               >
                 ← Voltar ao Menu Principal
               </Button>
             </div>
           )}
 
-          {/* Input */}
-          <div className="p-4 border-t border-border/50 bg-gradient-to-t from-background to-transparent">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && sendMessage()}
-                placeholder="Digite sua mensagem..."
-                className="flex-1 px-3 py-2 border border-border/50 rounded-xl bg-background/50 backdrop-blur-sm focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-200"
-              />
-              <Button 
-                onClick={sendMessage} 
-                size="sm" 
-                disabled={!chatInput.trim()}
-                className="rounded-xl bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
-              >
-                <Send className="w-4 h-4" />
-              </Button>
-            </div>
-            
-            {/* Encerrar Chat Button in Input Area */}
-            {chatMessages.length > 1 && (
-              <div className="flex justify-center mt-2">
+          {/* Input Area */}
+          {!showForm && (
+            <div className="p-3 sm:p-4 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+              <div className="flex gap-2">
+                <Input
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                  placeholder="Digite sua mensagem..."
+                  className="flex-1 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm"
+                />
                 <Button
-                  variant="ghost"
+                  onClick={sendMessage}
+                  disabled={!chatInput.trim()}
                   size="sm"
-                  onClick={endChat}
-                  className="text-xs text-red-500 hover:text-red-600 hover:bg-red-50"
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  <X className="w-3 h-3 mr-1" />
-                  Encerrar Chat
+                  <Send className="w-4 h-4" />
                 </Button>
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Quote Form */}
           {showForm && (
-            <div className="absolute inset-0 bg-background/95 backdrop-blur-sm z-10 flex flex-col">
-              <div className="flex items-center justify-between p-4 border-b border-border/50">
+            <div className="absolute inset-0 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm z-10 flex flex-col">
+              <div className="flex items-center justify-between p-3 sm:p-4 border-b border-slate-200 dark:border-slate-700">
                 <div className="flex items-center gap-2">
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => setShowForm(false)}
-                    className="h-8 w-8 p-0"
+                    className="h-7 w-7 sm:h-8 sm:w-8 p-0"
                   >
                     <X className="w-4 h-4" />
                   </Button>
-                  <h4 className="text-lg font-semibold">📋 Orçamento Personalizado</h4>
+                  <h4 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white">📋 Orçamento Personalizado</h4>
                 </div>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setShowForm(false)}
-                  className="text-xs"
+                  className="text-xs border-slate-200 dark:border-slate-600 h-8"
                 >
                   Voltar ao Chat
                 </Button>
               </div>
-              <div className="flex-1 overflow-y-auto p-4">
+              <div className="flex-1 overflow-y-auto p-3 sm:p-4">
                 
-                <form onSubmit={handleFormSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleFormSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 gap-4 sm:gap-6">
                     <div>
-                      <label className="block mb-1 font-medium">Nome *</label>
+                      <label className="block mb-1 font-medium text-sm sm:text-base text-slate-900 dark:text-white">Nome *</label>
                       <Input
                         name="name"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                         required
                         placeholder="Seu nome completo"
+                        className="border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 h-10 sm:h-11"
                       />
                     </div>
                     <div>
-                      <label className="block mb-1 font-medium">E-mail *</label>
+                      <label className="block mb-1 font-medium text-sm sm:text-base text-slate-900 dark:text-white">E-mail *</label>
                       <Input
                         name="email"
                         type="email"
@@ -904,25 +892,27 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         required
                         placeholder="seu@email.com"
+                        className="border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 h-10 sm:h-11"
                       />
                     </div>
                     <div>
-                      <label className="block mb-1 font-medium">Telefone</label>
+                      <label className="block mb-1 font-medium text-sm sm:text-base text-slate-900 dark:text-white">Telefone</label>
                       <Input
                         name="phone"
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         placeholder="(91) 99601-4545"
+                        className="border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 h-10 sm:h-11"
                       />
                     </div>
                     <div>
-                      <label className="block mb-1 font-medium">Tipo de Projeto *</label>
+                      <label className="block mb-1 font-medium text-sm sm:text-base text-slate-900 dark:text-white">Tipo de Projeto *</label>
                       <select
                         name="project"
                         value={formData.project}
                         onChange={(e) => setFormData({...formData, project: e.target.value})}
                         required
-                        className="w-full rounded-lg px-3 py-2 border border-input bg-background text-foreground"
+                        className="w-full rounded-lg px-3 py-2 border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white h-10 sm:h-11"
                       >
                         <option value="">Selecione...</option>
                         {projectTypesSimple.map((type) => (
@@ -932,7 +922,7 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                     </div>
                   </div>
                   <div>
-                    <label className="block mb-1 font-medium">Mensagem *</label>
+                    <label className="block mb-1 font-medium text-sm sm:text-base text-slate-900 dark:text-white">Mensagem *</label>
                     <Textarea
                       name="message"
                       value={formData.message}
@@ -940,11 +930,12 @@ export const ChatWidget = ({ isOpen, onClose }: ChatWidgetProps) => {
                       required
                       placeholder="Descreva seu projeto e necessidades..."
                       rows={4}
+                      className="border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800"
                     />
                   </div>
                   <Button
                     type="submit"
-                    className="w-full mt-2"
+                    className="w-full mt-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Enviando..." : "Enviar Solicitação"}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MessageCircle, Send, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MessageCircle, Send, MapPin, Clock, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -25,25 +25,29 @@ export const ContactSection = () => {
       icon: Phone,
       title: "Telefone",
       content: `+55 ${whatsappNumber.replace(/^55/, '')}`,
-      action: `tel:+55${whatsappNumber}`
+      action: `tel:+55${whatsappNumber}`,
+      color: "from-green-500 to-green-600"
     },
     {
       icon: Mail,
       title: "E-mail",
       content: adminEmail,
-      action: `mailto:${adminEmail}`
+      action: `mailto:${adminEmail}`,
+      color: "from-blue-500 to-blue-600"
     },
     {
       icon: MapPin,
       title: "Localização",
       content: "Castanhal, Pará - Brasil",
-      action: null
+      action: null,
+      color: "from-purple-500 to-purple-600"
     },
     {
       icon: Clock,
       title: "Horário",
       content: "Seg-Sex: 9h às 18h",
-      action: null
+      action: null,
+      color: "from-orange-500 to-orange-600"
     }
   ];
 
@@ -54,14 +58,12 @@ export const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Substitua pelos seus IDs do EmailJS
+    
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateIdAdmin = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_ADMIN;
     const templateIdClient = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CLIENT;
     const userId = import.meta.env.VITE_EMAILJS_USER_ID;
-    // const adminEmail = import.meta.env.VITE_ADMIN_EMAIL; // Moved to top
 
-    // Validação das variáveis de ambiente
     const missingVars = [];
     if (!serviceId) missingVars.push('VITE_EMAILJS_SERVICE_ID');
     if (!templateIdAdmin) missingVars.push('VITE_EMAILJS_TEMPLATE_ID_ADMIN');
@@ -80,14 +82,6 @@ export const ContactSection = () => {
       return;
     }
 
-    console.log('Configuração EmailJS:', {
-      serviceId,
-      templateIdAdmin,
-      templateIdClient,
-      userId,
-      adminEmail
-    });
-
     const templateParamsAdmin = {
       name: formData.name,
       email: formData.email,
@@ -97,21 +91,16 @@ export const ContactSection = () => {
     };
     const templateParamsClient = {
       name: formData.name,
-      email: formData.email, // Adicionado para envio ao cliente
+      email: formData.email,
       project: formData.project,
       message: formData.message,
-      to_email: formData.email, // Garantir que o e-mail seja enviado para o cliente
+      to_email: formData.email,
     };
 
-    console.log('Dados para admin:', templateParamsAdmin);
-    console.log('Dados para cliente:', templateParamsClient);
-    console.log('Email do cliente que deve receber confirmação:', formData.email);
-    // Envia primeiro para o admin
     emailjs.send(serviceId, templateIdAdmin, templateParamsAdmin, userId)
       .then((adminResult) => {
         console.log('Email para admin enviado com sucesso:', adminResult);
         
-        // Envia confirmação para o cliente com timeout para evitar conflitos
         setTimeout(() => {
           emailjs.send(serviceId, templateIdClient, templateParamsClient, userId)
             .then((clientResult) => {
@@ -145,7 +134,7 @@ export const ContactSection = () => {
               });
               setLoading(false);
             });
-        }, 1000); // Espera 1 segundo entre os envios
+        }, 1000);
       })
       .catch((error) => {
         console.error('Erro ao enviar email para admin:', error);
@@ -166,38 +155,54 @@ export const ContactSection = () => {
   };
 
   const projectTypes = [
-    "Landing Page",
+    "UI/UX Design",
+    "Web Development",
+    "Mobile Apps",
     "E-commerce",
-    "Sistema Web",
-    "App Mobile",
     "Sistema Personalizado",
     "Consultoria"
   ];
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mx-auto">
-          <Card className="p-8 shadow-lg hover-smooth" data-animation="slide-up-smooth">
-            <h2 className="text-3xl font-bold mb-2 text-center" data-animation="fade-in-smooth">Contato Direto</h2>
-            <p className="text-muted-foreground text-center mb-8" data-animation="fade-in-smooth">
-              Prefere contato direto? Use um dos canais abaixo ou continue usando nosso chatbot.
-            </p>
+        <div className="text-center mb-16" data-animation="fade-in-smooth">
+          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-6" data-animation="slide-left-smooth">
+            <Sparkles className="w-4 h-4 text-purple-500 mr-2" />
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Vamos Conversar</span>
+          </div>
+          <h2 className="text-4xl lg:text-6xl font-bold mb-8" data-animation="fade-in-smooth">
+            <span className="bg-gradient-to-r from-slate-900 via-purple-800 to-slate-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent">
+              Inicie seu
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Projeto
+            </span>
+          </h2>
+          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed" data-animation="fade-in-smooth">
+            Conte-nos sobre sua ideia e vamos transformá-la em realidade juntos.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Form */}
+          <Card className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/20 dark:border-slate-700/50 shadow-2xl hover:shadow-3xl transition-all duration-500 p-8" data-animation="slide-up-smooth">
             <form onSubmit={handleSubmit} className="space-y-6" data-animation="fade-in-smooth">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-children">
-                <div className="hover-smooth" data-animation="fade-in-smooth">
-                  <label className="block mb-1 font-medium">Nome *</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Nome *</label>
                   <Input
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
                     placeholder="Seu nome completo"
-                    className="hover-scale-smooth"
+                    className="bg-white/50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 focus:border-purple-500 dark:focus:border-purple-400 transition-all duration-300"
                   />
                 </div>
-                <div className="hover-smooth" data-animation="fade-in-smooth">
-                  <label className="block mb-1 font-medium">E-mail *</label>
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">E-mail *</label>
                   <Input
                     name="email"
                     type="email"
@@ -205,27 +210,27 @@ export const ContactSection = () => {
                     onChange={handleChange}
                     required
                     placeholder="seu@email.com"
-                    className="hover-scale-smooth"
+                    className="bg-white/50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 focus:border-purple-500 dark:focus:border-purple-400 transition-all duration-300"
                   />
                 </div>
-                <div className="hover-smooth" data-animation="fade-in-smooth">
-                  <label className="block mb-1 font-medium">Telefone</label>
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Telefone</label>
                   <Input
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(91) 99601-4545"
-                    className="hover-scale-smooth"
+                    className="bg-white/50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 focus:border-purple-500 dark:focus:border-purple-400 transition-all duration-300"
                   />
                 </div>
-                <div className="hover-smooth" data-animation="fade-in-smooth">
-                  <label className="block mb-1 font-medium">Tipo de Projeto *</label>
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Tipo de Projeto *</label>
                   <select
                     name="project"
                     value={formData.project}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-lg px-3 py-2 border border-input bg-background text-foreground hover-scale-smooth"
+                    className="w-full rounded-lg px-3 py-2 bg-white/50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 focus:border-purple-500 dark:focus:border-purple-400 text-slate-700 dark:text-slate-300 transition-all duration-300"
                   >
                     <option value="">Selecione...</option>
                     {projectTypes.map((type) => (
@@ -234,8 +239,8 @@ export const ContactSection = () => {
                   </select>
                 </div>
               </div>
-              <div className="hover-smooth" data-animation="fade-in-smooth">
-                <label className="block mb-1 font-medium">Mensagem *</label>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Mensagem *</label>
                 <Textarea
                   name="message"
                   value={formData.message}
@@ -243,42 +248,68 @@ export const ContactSection = () => {
                   required
                   placeholder="Descreva seu projeto e necessidades..."
                   rows={4}
-                  className="hover-scale-smooth"
+                  className="bg-white/50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 focus:border-purple-500 dark:focus:border-purple-400 transition-all duration-300"
                 />
               </div>
               <Button
                 type="submit"
-                className="w-full mt-2 hover-smooth"
+                size="lg"
+                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 group"
                 disabled={loading}
               >
                 {loading ? "Enviando..." : "Enviar Solicitação"}
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
               </Button>
             </form>
-            <div className="text-center mt-6" data-animation="fade-in-up">
-              <span className="text-muted-foreground">Ou fale conosco via:</span>
+            
+            <div className="text-center mt-8 pt-8 border-t border-slate-200 dark:border-slate-700" data-animation="fade-in-up">
+              <span className="text-slate-600 dark:text-slate-400 text-sm">Ou fale conosco via:</span>
               <Button
                 variant="outline"
-                className="ml-2 border-green-500 text-green-600 hover:bg-green-50 hover-lift hover-glow"
+                size="lg"
+                className="ml-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={handleWhatsApp}
               >
-                <MessageCircle className="w-5 h-5 mr-2 pulse" /> WhatsApp
+                <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          </Card>
+
+          {/* Contact Info */}
+          <div className="space-y-8" data-animation="slide-right-smooth">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Informações de Contato</h3>
               {contactInfo.map((info, idx) => (
-                <div key={idx} className="flex items-center space-x-3 hover-lift" data-animation="fade-in-up">
-                  <info.icon className="w-5 h-5 text-primary pulse" />
-                  {info.action ? (
-                    <a href={info.action} className="text-foreground hover:text-primary transition-colors">
-                      {info.content}
-                    </a>
-                  ) : (
-                    <span className="text-foreground">{info.content}</span>
-                  )}
+                <div key={idx} className="flex items-center space-x-4 p-4 bg-white/50 dark:bg-slate-700/50 backdrop-blur-sm rounded-xl hover:bg-white/70 dark:hover:bg-slate-700/70 transition-all duration-300 group" data-animation="fade-in-smooth">
+                  <div className={`w-12 h-12 bg-gradient-to-r ${info.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110`}>
+                    <info.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-slate-900 dark:text-white">{info.title}</h4>
+                    {info.action ? (
+                      <a href={info.action} className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                        {info.content}
+                      </a>
+                    ) : (
+                      <span className="text-slate-600 dark:text-slate-400">{info.content}</span>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
-          </Card>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 gap-6 pt-8 border-t border-slate-200 dark:border-slate-700">
+              <div className="text-center p-4 bg-white/30 dark:bg-slate-700/30 backdrop-blur-sm rounded-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">24h</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Resposta</div>
+              </div>
+              <div className="text-center p-4 bg-white/30 dark:bg-slate-700/30 backdrop-blur-sm rounded-xl">
+                <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">100%</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Gratuito</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

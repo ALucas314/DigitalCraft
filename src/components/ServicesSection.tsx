@@ -1,4 +1,4 @@
-import { Globe, Smartphone, ShoppingCart, Settings, Code, Zap } from "lucide-react";
+import { Globe, Smartphone, ShoppingCart, Settings, Code, Zap, Palette, Shield, Clock, Users } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -9,130 +9,137 @@ interface ServicesSectionProps {
 export const ServicesSection = ({ onContactClick }: ServicesSectionProps) => {
   const services = [
     {
+      icon: Palette,
+      title: "UI/UX Design",
+      description: "Design de interfaces modernas e intuitivas com foco na experiência do usuário.",
+      features: ["Wireframes & Protótipos", "Design System", "User Research"],
+      timeframe: "1-2 semanas",
+      popular: false,
+      color: "from-purple-500 to-purple-600"
+    },
+    {
       icon: Globe,
-      title: "Landing Pages",
-      description: "Páginas otimizadas para conversão com design responsivo e carregamento ultra-rápido.",
-      features: ["Design Responsivo", "SEO Otimizado", "Integração com Analytics"],
-      timeframe: "1 semana",
-      popular: false
+      title: "Web Development",
+      description: "Desenvolvimento de aplicações web responsivas e performáticas.",
+      features: ["React/Next.js", "TypeScript", "SEO Otimizado"],
+      timeframe: "2-4 semanas",
+      popular: true,
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile Apps",
+      description: "Aplicativos nativos e híbridos para iOS e Android.",
+      features: ["React Native", "Flutter", "App Store"],
+      timeframe: "4-6 semanas",
+      popular: false,
+      color: "from-green-500 to-green-600"
     },
     {
       icon: ShoppingCart,
       title: "E-commerce",
-      description: "Lojas virtuais completas com pagamento integrado e gestão de produtos.",
-      features: ["Gateway de Pagamento", "Gestão de Estoque", "Painel Administrativo"],
-      timeframe: "3 semanas",
-      popular: true
-    },
-    {
-      icon: Code,
-      title: "Sistemas Web",
-      description: "Aplicações web personalizadas para gestão e automação de processos.",
-      features: ["Banco de Dados", "API Restful", "Relatórios Avançados"],
-      timeframe: "4-6 semanas",
-      popular: false
-    },
-    {
-      icon: Smartphone,
-      title: "Apps Mobile",
-      description: "Aplicativos nativos para iOS e Android com performance otimizada.",
-      features: ["Design Nativo", "Push Notifications", "Integração com APIs"],
-      timeframe: "6-8 semanas",
-      popular: false
+      description: "Lojas virtuais completas com gestão de produtos e pagamentos.",
+      features: ["Shopify/WooCommerce", "Gateway de Pagamento", "Analytics"],
+      timeframe: "3-5 semanas",
+      popular: false,
+      color: "from-orange-500 to-orange-600"
     }
   ];
 
   const whyChooseUs = [
     {
-      icon: Zap,
-      title: "Entrega Ágil",
-      description: "Metodologia ágil para entregas rápidas e iterativas"
+      icon: Clock,
+      title: "Entrega Rápida",
+      description: "Metodologia ágil para entregas em tempo recorde"
     },
     {
-      icon: Settings,
-      title: "Personalização Total",
-      description: "Cada projeto é único e desenvolvido sob medida"
+      icon: Shield,
+      title: "Qualidade Garantida",
+      description: "Código limpo e testes automatizados"
     },
     {
-      icon: Code,
-      title: "Código Limpo",
-      description: "Desenvolvimento com as melhores práticas e padrões"
+      icon: Users,
+      title: "Suporte Dedicado",
+      description: "Acompanhamento completo do projeto"
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full mb-4 hover-smooth" data-animation="slide-left-smooth">
-            <span className="text-sm font-medium text-primary">💻 Nossos Serviços</span>
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20" data-animation="fade-in-smooth">
+          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-6" data-animation="slide-left-smooth">
+            <Palette className="w-4 h-4 text-purple-500 mr-2" />
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Nossos Serviços</span>
           </div>
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6" data-animation="fade-in-smooth">
-            Soluções Completas em{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent gradient-shift">
-              Desenvolvimento
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 sm:mb-8" data-animation="fade-in-smooth">
+            <span className="bg-gradient-to-r from-slate-900 via-purple-800 to-slate-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent">
+              Soluções
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Digitais
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-animation="fade-in-smooth">
-            Oferecemos uma gama completa de serviços de desenvolvimento, 
-            desde landing pages até sistemas complexos.
+          <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed" data-animation="fade-in-smooth">
+            Desenvolvimento de interfaces modernas e aplicações web com foco em 
+            experiência do usuário e design minimalista.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 stagger-children">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20 lg:mb-24">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <Card 
                 key={index} 
-                className={`card-gradient card-hover p-6 relative hover-smooth ${
-                  service.popular ? 'ring-2 ring-accent' : ''
+                className={`bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/20 dark:border-slate-700/50 shadow-xl hover:shadow-2xl transition-all duration-500 p-8 relative group hover:scale-105 ${
+                  service.popular ? 'ring-2 ring-purple-500/50' : ''
                 }`}
                 data-animation="fade-in-smooth"
               >
                 {service.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2" data-animation="scale-in-smooth">
-                    <span className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2" data-animation="scale-in-smooth">
+                    <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
                       MAIS POPULAR
                     </span>
                   </div>
                 )}
                 
-                <div className="space-y-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center hover-scale-smooth">
-                    <Icon className="w-6 h-6 text-primary" />
+                <div className="space-y-6">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110`}>
+                    <Icon className="w-8 h-8 text-white" />
                   </div>
                   
                   <div>
-                    <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <h3 className="text-xl font-bold mb-3 text-slate-900 dark:text-white">{service.title}</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                       {service.description}
                     </p>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center text-sm">
-                        <div className="w-1.5 h-1.5 bg-accent rounded-full mr-2"></div>
-                        <span>{feature}</span>
+                        <div className={`w-2 h-2 bg-gradient-to-r ${service.color} rounded-full mr-3`}></div>
+                        <span className="text-slate-700 dark:text-slate-300">{feature}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="pt-4 border-t border-border/50">
+                  <div className="pt-6 border-t border-slate-200 dark:border-slate-700">
                     <div className="flex justify-between items-center mb-4">
-                      <span className="text-sm text-muted-foreground">Prazo:</span>
-                      <span className="font-bold text-primary">{service.timeframe}</span>
+                      <span className="text-sm text-slate-500 dark:text-slate-400">Prazo:</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{service.timeframe}</span>
                     </div>
                     <Button 
-                      variant={service.popular ? "hero" : "outline"} 
                       size="sm" 
-                      className="w-full hover-smooth"
+                      className={`w-full bg-gradient-to-r ${service.color} hover:shadow-lg transition-all duration-300 text-white border-0`}
                       onClick={onContactClick}
                     >
-                      Conversar sobre Projeto
+                      Iniciar Projeto
                     </Button>
                   </div>
                 </div>
@@ -143,25 +150,27 @@ export const ServicesSection = ({ onContactClick }: ServicesSectionProps) => {
 
         {/* Why Choose Us */}
         <div data-animation="slide-in-bottom">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-4" data-animation="fade-in-up">
-              Por que nos escolher?
+          <div className="text-center mb-16">
+            <h3 className="text-3xl lg:text-4xl font-bold mb-6" data-animation="fade-in-up">
+              <span className="bg-gradient-to-r from-slate-900 via-purple-800 to-slate-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent">
+                Por que nos escolher?
+              </span>
             </h3>
-            <p className="text-muted-foreground" data-animation="fade-in-up">
+            <p className="text-slate-600 dark:text-slate-400 text-lg" data-animation="fade-in-up">
               Diferenciais que nos tornam a melhor escolha para seu projeto
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-12">
             {whyChooseUs.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="text-center space-y-4" data-animation="fade-in-up">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto hover-scale">
-                    <Icon className="w-8 h-8 text-primary-foreground" />
+                <div key={index} className="text-center space-y-6 group" data-animation="fade-in-up">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-500 rounded-3xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                    <Icon className="w-10 h-10 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold">{item.title}</h4>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white">{item.title}</h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
                 </div>
               );
             })}
