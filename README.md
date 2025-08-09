@@ -141,7 +141,7 @@ Uso Não Comercial (NC) — você pode usar, modificar e distribuir para fins n�
 **Antonio Lucas Costa Araújo**
 - LinkedIn: [Perfil](https://www.linkedin.com/in/antonio-lucas-costa-araujo-5462a52b0)
 - GitHub: [@ALucas314](https://github.com/ALucas314)
-- Portfólio: https://seusite.com
+
 
 <div align="center">
 
